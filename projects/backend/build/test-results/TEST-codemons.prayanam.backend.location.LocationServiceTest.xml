@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="codemons.prayanam.backend.location.LocationServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2015-12-03T18:37:30" hostname="ROBO" time="0.002">
+  <properties/>
+  <testcase name="testGetAllLocations" classname="codemons.prayanam.backend.location.LocationServiceTest" time="0.002"/>
+  <system-out><![CDATA[tesing
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

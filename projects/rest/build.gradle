@@ -1,0 +1,32 @@
+group 'codemons.travelagency'
+
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'jetty'
+
+dependencies {
+    compile project(':backend')
+
+    // JAX RS dependency
+    compile 'javax.ws.rs:javax.ws.rs-api:2.0'
+
+    // Jersey dependency
+    compile 'org.glassfish.jersey.containers:jersey-container-servlet-core:2.22'
+
+    //Jersey JSON converter
+    compile 'org.glassfish.jersey.media:jersey-media-moxy:2.22'
+    compile 'log4j:log4j:1.2.16'
+}
+
+// Embeded Jetty for testing
+jettyRun{
+    contextPath = "rest"
+    httpPort = 8080
+    reload = "automatic"
+    scanIntervalSeconds = 1
+}
+
+jettyRunWar{
+    contextPath = "rest"
+    httpPort = 8080
+}

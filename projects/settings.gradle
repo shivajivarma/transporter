@@ -1,0 +1,5 @@
+rootProject.name = 'prayanam'
+include 'backend'
+include 'rest'
+include 'webapp'
+

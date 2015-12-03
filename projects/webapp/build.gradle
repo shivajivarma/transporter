@@ -1,0 +1,3 @@
+group 'codemons.prayanam'
+
+//compile project(':rest')

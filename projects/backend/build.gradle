@@ -1,0 +1,11 @@
+group 'codemons.prayanam'
+
+dependencies{
+    // Spring JDBC Dependencies
+    compile 'org.springframework:spring-context:4.0.2.RELEASE'
+    compile 'org.springframework:spring-tx:4.0.2.RELEASE'
+    compile 'org.springframework:spring-jdbc:4.0.2.RELEASE'
+
+    // MySQL Driver
+    compile 'mysql:mysql-connector-java:5.1.36'
+}
