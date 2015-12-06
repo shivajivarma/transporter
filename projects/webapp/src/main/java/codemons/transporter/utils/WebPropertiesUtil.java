@@ -10,32 +10,35 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package codemons.transporter.rest.resources;
+package codemons.transporter.utils;
 
-import java.util.List;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PropertiesLoaderUtils;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import java.io.IOException;
+import java.util.Properties;
 
-//import org.apache.log4j.Logger;
+public class WebPropertiesUtil {
 
+    private static WebPropertiesUtil ourInstance = new WebPropertiesUtil();
 
-import codemons.transporter.location.Location;
-import codemons.transporter.location.LocationService;
+    public static WebPropertiesUtil getInstance() {
+        return ourInstance;
+    }
 
-@Path("/messages")
-public class LocationResource {
-	//private static final Logger logger = Logger.getLogger(LocationResource.class);
+    private WebPropertiesUtil() {
+        Resource resource = new ClassPathResource("label.properties");
+        try {
+            labelProperties = PropertiesLoaderUtils.loadProperties(resource);
+        } catch (IOException e) {
+            System.out.println("[ Unable to load label.properties ]");
+        }
+    }
 
-	LocationService locationService = new LocationService();
-	
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Location> getLocations() {
-		//logger.debug("Location");
-		return locationService.getAllLocations();
-	}
-	
+    private Properties labelProperties;
+
+    public String getLabel(String key) {
+        return labelProperties.getProperty(key);
+    }
 }

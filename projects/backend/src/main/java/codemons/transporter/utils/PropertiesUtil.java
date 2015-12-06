@@ -28,17 +28,17 @@ public class PropertiesUtil {
     }
 
     private PropertiesUtil() {
-        Resource resource = new ClassPathResource("label.properties");
+        Resource resource = new ClassPathResource("app.properties");
         try {
-            labelProperties = PropertiesLoaderUtils.loadProperties(resource);
+            appProperties = PropertiesLoaderUtils.loadProperties(resource);
         } catch (IOException e) {
-            System.out.println("[ Unable to load label.properties ]");
+            System.out.println("[ Unable to load app.properties ]");
         }
     }
 
-    private Properties labelProperties;
+    private Properties appProperties;
 
-    public String getLabel(String key) {
-        return labelProperties.getProperty(key);
+    public String getResource(String key) {
+        return appProperties.getProperty(key);
     }
 }

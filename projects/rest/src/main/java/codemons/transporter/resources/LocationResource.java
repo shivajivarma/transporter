@@ -10,15 +10,32 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package codemons.transporter;
+package codemons.transporter.resources;
+
+import java.util.List;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+//import org.apache.log4j.Logger;
 
 
-import codemons.transporter.utils.PropertiesUtil;
+import codemons.transporter.location.Location;
+import codemons.transporter.location.LocationService;
 
-public class Main {
+@Path("/location")
+public class LocationResource {
+	//private static final Logger logger = Logger.getLogger(LocationResource.class);
 
-    public static void main(String[] args) {
-       // String value = PropertiesUtil.getInstance().getLabel("test.name");
-       // System.out.println(value);
-    }
+	LocationService locationService = new LocationService();
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Location> getLocations() {
+		//logger.debug("Location");
+		return locationService.getAllLocations();
+	}
+	
 }

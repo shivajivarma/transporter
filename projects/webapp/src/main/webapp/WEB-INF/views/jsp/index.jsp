@@ -1,5 +1,5 @@
-<%@ page import = "codemons.transporter.utils.PropertiesUtil" %>
-<% PropertiesUtil resource=PropertiesUtil.getInstance(); %>
+<%@ page import = "codemons.transporter.utils.WebPropertiesUtil" %>
+<% WebPropertiesUtil resource=WebPropertiesUtil.getInstance(); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,16 +124,9 @@
     <!-- /.container -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="container">
-      <div class="pull-right hidden-xs">
-        <b>Version</b> 1.0
-      </div>
-      <strong>Copyright &copy; 2015 <a href="http://codemons.com">Codemons</a>.</strong> All rights
-      reserved. Based on <a href="https://almsaeedstudio.com/">AdminLTE</a>.
-    </div>
-    <!-- /.container -->
-  </footer>
+  
+    <%@include file="components/footer.html"%>
+
 </div>
 <!-- ./wrapper -->
 
