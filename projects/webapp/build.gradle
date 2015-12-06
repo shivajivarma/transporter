@@ -1,4 +1,4 @@
-group 'codemons.prayanam'
+group 'codemons.transporter'
 
 apply plugin: 'war'
 apply plugin: 'jetty'
@@ -15,6 +15,7 @@ dependencies {
     /* Spring Security */
     compile 'org.springframework.security:spring-security-web:' + springSecurityVersion
     compile 'org.springframework.security:spring-security-config:' + springSecurityVersion
+    compile 'org.springframework.security:spring-security-taglibs:'  + springSecurityVersion
 
     /* Servlet dependencies */
     compile 'javax.servlet:javax.servlet-api:3.0.1'
@@ -45,4 +46,12 @@ jettyRun {
 jettyRunWar {
     contextPath = ""
     httpPort = 8080
+}
+
+task deploy (dependsOn: war){
+    copy {
+        from "/build/libs"
+        into ".deploy/deployments"
+        include "*.war"
+    }
 }

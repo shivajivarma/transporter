@@ -19,9 +19,9 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/prayanam" />
-		<property name="username" value="prayanam" />
-		<property name="password" value="prayanam" />
+		<property name="url" value="jdbc:mysql://localhost:3306/transporter" />
+		<property name="username" value="transporter" />
+		<property name="password" value="transporter" />
 	</bean>
 
 </beans>

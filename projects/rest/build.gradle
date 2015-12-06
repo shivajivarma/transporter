@@ -1,4 +1,4 @@
-group 'codemons.prayanam'
+group 'codemons.transporter'
 
 apply plugin: 'war'
 apply plugin: 'eclipse-wtp'
