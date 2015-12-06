@@ -23,7 +23,7 @@ public class LocationDAO extends JdbcDaoSupport {
     Location location;
     List<Location> locations;
 
-    public Location findById(int id) throws EmptyResultDataAccessException {
+    public Location findById(long id) throws EmptyResultDataAccessException {
         String sql = "select * from location where id = ?";
 
         location = (Location) getJdbcTemplate().queryForObject(sql,

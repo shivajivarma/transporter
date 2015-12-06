@@ -14,9 +14,7 @@ package codemons.transporter.resources;
 
 import java.util.List;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 //import org.apache.log4j.Logger;
@@ -25,7 +23,7 @@ import javax.ws.rs.core.MediaType;
 import codemons.transporter.location.Location;
 import codemons.transporter.location.LocationService;
 
-@Path("/location")
+@Path("/locations")
 public class LocationResource {
 	//private static final Logger logger = Logger.getLogger(LocationResource.class);
 
@@ -37,5 +35,22 @@ public class LocationResource {
 		//logger.debug("Location");
 		return locationService.getAllLocations();
 	}
-	
+
+/*	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Location addMessage(Location message) {
+		return messageService.addMessage(message);
+	}*/
+
+
+	@GET
+	@Path("/{locationId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Location getMessage(@PathParam("messageId") long id) {
+		return locationService.getLocation(id);
+
+	}
+
+
 }

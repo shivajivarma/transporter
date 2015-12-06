@@ -19,10 +19,14 @@ import java.util.List;
 public class LocationService {
 
 	private static ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext("spring-database.xml");
-	
+	LocationDAO locationDAO = appContext.getBean("locationDAO",LocationDAO.class);
+
 	public List<Location> getAllLocations() {
-		LocationDAO locationDAO = appContext.getBean("locationDAO",LocationDAO.class);
 		return locationDAO.findAll();
+	}
+
+	public Location getLocation(long id) {
+		return locationDAO.findById(id);
 	}
 
 }
