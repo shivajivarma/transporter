@@ -30,6 +30,7 @@
 			password-parameter="password" />
 		<logout logout-success-url="/login?logout"  />
 		<!-- enable csrf protection -->
+		<!--csrf request-matcher-ref="csrfSecurityRequestMatcher"  /-->
 		<csrf/>
 	</http>
 
@@ -48,5 +49,6 @@
 		</authentication-provider>
 
 	</authentication-manager>
-
+    <beans:bean id="csrfSecurityRequestMatcher"
+                     class="codemons.transporter.service.CsrfSecurityRequestMatcher" />
 </beans:beans>

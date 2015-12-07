@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Location {
-    int id;
+    long id;
     String name;
 
     public Location(){}
@@ -26,11 +26,11 @@ public class Location {
         this.name = name;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

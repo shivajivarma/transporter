@@ -22,12 +22,18 @@ public class LocationService {
 	LocationDAO locationDAO = appContext.getBean("locationDAO",LocationDAO.class);
 
 	public List<Location> getAllLocations() {
-		return locationDAO.findAll();
+        List<Location> locations = locationDAO.findAll();
+		return locations;
 	}
 
 	public Location getLocation(long id) {
 		return locationDAO.findById(id);
 	}
 
+	public Location addLocation(Location location) {
+		long id = locationDAO.save(location);
+		location.setId(id);
+		return location;
+	}
 }
 

@@ -1,5 +1,5 @@
-<%@ page import = "codemons.transporter.utils.PropertiesUtil" %>
-<% PropertiesUtil resource=PropertiesUtil.getInstance(); %>
+<%@ page import = "codemons.transporter.utils.WebPropertiesUtil" %>
+<% WebPropertiesUtil resource=WebPropertiesUtil.getInstance(); %>
 <!DOCTYPE html>
 <html>
 <head>

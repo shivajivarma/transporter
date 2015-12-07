@@ -4,6 +4,9 @@ apply plugin: 'war'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'jetty'
 
+def springVersion = "4.0.2.RELEASE"
+def springSecurityVersion = '3.2.3.RELEASE'
+
 dependencies {
     compile project(':backend')
 
@@ -16,6 +19,11 @@ dependencies {
     /* Jersey JSON converter */
     compile 'org.glassfish.jersey.media:jersey-media-moxy:2.22'
 
+    /* Spring Security */
+  //  compile 'org.springframework.security:spring-security-config:' + springSecurityVersion
+  /*  compile 'org.springframework.security:spring-security-config:' + springSecurityVersion
+    compile 'org.springframework.security:spring-security-taglibs:'  + springSecurityVersion
+*/
     /* Logging */
     // compile 'log4j:log4j:1.2.16'
 }

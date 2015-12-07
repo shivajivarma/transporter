@@ -12,10 +12,17 @@
 
 package codemons.transporter.location;
 
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 public class LocationDAO extends JdbcDaoSupport {
@@ -24,7 +31,7 @@ public class LocationDAO extends JdbcDaoSupport {
     List<Location> locations;
 
     public Location findById(long id) throws EmptyResultDataAccessException {
-        String sql = "select * from location where id = ?";
+        String sql = "SELECT * FROM LOCATION WHERE id = ?";
 
         location = (Location) getJdbcTemplate().queryForObject(sql,
                 new Object[]{id},
@@ -42,4 +49,53 @@ public class LocationDAO extends JdbcDaoSupport {
         return locations;
     }
 
+    public long save(final Location location) {
+
+        final String sql = "INSERT INTO LOCATION (name) VALUES(?)";
+
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+
+        getJdbcTemplate().update(new PreparedStatementCreator() {
+            @Override
+            public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+                PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                ps.setObject(1, location.getName());
+                return ps;
+            }
+        }, keyHolder);
+
+        return keyHolder.getKey().longValue();
+
+    }
+
+
 }
+
+/*
+public int save(final E entity) {
+
+		final String sql = "INSERT INTO TABLE_NAME( COLUMN_NAME1,COLUMN_NAME2,...) VALUES (?,?,..) ";
+
+		Object[] objectPropertyValueArray  = new Object[]{VALUE1,VALUE2,...};
+		logger.debug(sql.replaceAll("\\?", "{}"),objectPropertyValueArray);
+
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+
+		getJdbcTemplate().update(new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+				PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+				int index = 1;
+				for (Object propertyValue : objectPropertyExceptIdValueArray) {
+					ps.setObject(index, propertyValue);
+					index++;
+				}
+				return ps;
+			}
+		}, keyHolder);
+
+		logger.debug("Generated {}",keyHolder.getKey());
+
+		return keyHolder.getKey().intValue();
+	}
+ */

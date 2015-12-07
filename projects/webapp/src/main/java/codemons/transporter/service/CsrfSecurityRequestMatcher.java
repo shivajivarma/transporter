@@ -10,47 +10,25 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package codemons.transporter.resources;
-
-import java.util.List;
-
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-
-//import org.apache.log4j.Logger;
+package codemons.transporter.service;
 
 
-import codemons.transporter.location.Location;
-import codemons.transporter.location.LocationService;
+import org.springframework.security.web.util.RequestMatcher;
+import org.springframework.security.web.util.RegexRequestMatcher;
 
-@Path("/locations")
-public class LocationResource {
-	//private static final Logger logger = Logger.getLogger(LocationResource.class);
+import javax.servlet.http.HttpServletRequest;
+import java.util.regex.Pattern;
 
-	LocationService locationService = new LocationService();
-	
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Location> getLocations() {
-		//logger.debug("Location");
-		return locationService.getAllLocations();
-	}
+/**
+ * Created by Shivaji Varma on 12/7/2015.
+ */
+public class CsrfSecurityRequestMatcher implements RequestMatcher {
 
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Location addMessage(Location location) {
-        return locationService.addLocation(location);
+    @Override
+    public boolean matches(HttpServletRequest request) {
+        if(request.getMethod().equals("POST") && request.getRequestURI().startsWith("/rest/")){
+            return false;
+        }
+        return true;
     }
-
-
-    @GET
-    @Path("/{locationId}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Location getMessage(@PathParam("locationId") long id) {
-        return locationService.getLocation(id);
-
-    }
-
-
 }
