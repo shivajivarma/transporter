@@ -1,2 +1,2 @@
-DROP SCHEMA IF EXISTS `travelagency` ;
-CREATE SCHEMA `travelagency` ;
+DROP SCHEMA IF EXISTS `transporter` ;
+CREATE SCHEMA `transporter` ;

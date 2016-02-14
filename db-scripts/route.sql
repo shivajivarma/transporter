@@ -1,10 +1,18 @@
-CREATE TABLE `travelagency`.`route` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-    `origin` INT NOT NULL,
-	`destination` INT NOT NULL,
-	`distance` INT NOT NULL,
+CREATE TABLE `transporter`.`route` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `from` INT(11) NOT NULL,
+  `to` INT(11) NOT NULL,
+  `distance` INT(10) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `ROUTE_UNIQUE` (`origin`,`destination`),
-  FOREIGN KEY (`origin`) REFERENCES  `travelagency`.`location` (`id`),
-  FOREIGN KEY (`destination`) REFERENCES  `travelagency`.`location` (`id`))
-  AUTO_INCREMENT=1;
+  INDEX `fk_from_location_idx` (`from` ASC),
+  INDEX `fk_to_location_idx` (`to` ASC),
+  CONSTRAINT `fk_from_location`
+    FOREIGN KEY (`from`)
+    REFERENCES `transporter`.`locations` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_to_location`
+    FOREIGN KEY (`to`)
+    REFERENCES `transporter`.`locations` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);

@@ -1,0 +1,5 @@
+CREATE TABLE `transporter`.`locations` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL UNIQUE,
+  PRIMARY KEY (`id`))
+  AUTO_INCREMENT=1;
