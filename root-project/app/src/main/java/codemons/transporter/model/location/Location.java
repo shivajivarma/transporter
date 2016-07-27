@@ -22,10 +22,14 @@ public class Location {
     // An auto generated id (unique for each user in the db)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
+    private long id;
 
     @Column(name = "name")
-    String name;
+    private String name;
+
+    @Column(name = "enabled")
+    private boolean enabled;
+
 
     public Location() {
     }
@@ -54,11 +58,20 @@ public class Location {
         this.name = name;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     @Override
     public String toString() {
         return "Location{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", enabled=" + enabled +
                 '}';
     }
 }

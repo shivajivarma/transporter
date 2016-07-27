@@ -22,7 +22,7 @@ public class ReservationController {
         return reservationService.getAllReservations();
     }
 
-    @RequestMapping(value = "/{reservationId}", method = RequestMethod.GET, produces = {"application/json"})
+   /* @RequestMapping(value = "/{reservationId}", method = RequestMethod.GET, produces = {"application/json"})
     public
     @ResponseBody
     Reservation getLocation(@PathVariable long reservationId) {
@@ -36,5 +36,27 @@ public class ReservationController {
     @ResponseBody
     Reservation addLocation(@RequestBody Reservation reservation) {
         return reservationService.addReservation(reservation);
+    }*/
+
+    @RequestMapping(method = RequestMethod.DELETE, consumes = {"application/json"}, produces = {"application/json"})
+    @ResponseStatus(HttpStatus.OK)
+    public
+    @ResponseBody
+    String removeReservation(@RequestBody List<Reservation> reservations) {
+
+        for (Reservation reservation:
+             reservations) {
+            reservationService.removeReservation(reservation.getId());
+        }
+
+        return "{\"status\": \"success\"}";
     }
+
+    /*@RequestMapping(value = "/{reservationId}", method = RequestMethod.DELETE, produces = {"application/json"})
+    @ResponseStatus(HttpStatus.OK)
+    public
+    @ResponseBody
+    void removeReservation(@PathVariable long reservationId) {
+        reservationService.removeReservation(reservationId);
+    }*/
 }

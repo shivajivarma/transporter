@@ -22,25 +22,25 @@ public class Passenger {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
+    private long id;
 
     @Column(name = "username")
-    String username;
+    private String username;
 
     @Column(name = "name")
-    String name;
+    private String name;
 
     @Column(name ="dob")
-    Date dob;
+    private Date dob;
 
     @Column(name ="gender")
-    byte gender;
+    private byte gender;
 
     @Column(name ="email")
-    String email;
+    private String email;
 
     @Column(name ="mobile")
-    String mobile;
+    private String mobile;
 
     public Passenger(){
 

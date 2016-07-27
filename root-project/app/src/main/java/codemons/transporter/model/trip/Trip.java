@@ -13,6 +13,7 @@
 package codemons.transporter.model.trip;
 
 import javax.persistence.*;
+import java.util.Date;
 
 
 @Entity
@@ -22,32 +23,35 @@ public class Trip {
     // An auto generated id (unique for each user in the db)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
+    private long id;
 
-    @Column(name = "route")
-    String route;
+    @Column(name = "routemap")
+    private String routemap;
 
     @Column(name = "priceperperson")
-    float priceperperson;
+    private float priceperperson;
 
     @Column(name = "facilities")
-    String facilities;
+    private String facilities;
 
     @Column(name = "seating")
-    long seating;
+    private long seating;
 
     @Column(name = "vehicle")
-    String vehicle;
+    private long vehicle;
+
+    @Column(name = "dt")
+    private Date dt;
 
     public Trip() {
     }
 
-    public String getRoute() {
-        return route;
+    public String getRoutemap() {
+        return routemap;
     }
 
-    public void setRoute(String route) {
-        this.route = route;
+    public void setRoutemap(String routemap) {
+        this.routemap = routemap;
     }
 
     public long getId() {
@@ -82,13 +86,19 @@ public class Trip {
         this.seating = seating;
     }
 
-    public String getVehicle() {
+    public long getVehicle() {
         return vehicle;
     }
 
-    public void setVehicle(String vehicle) {
+    public void setVehicle(byte vehicle) {
         this.vehicle = vehicle;
     }
 
+    public Date getDt() {
+        return dt;
+    }
 
+    public void setDt(Date dt) {
+        this.dt = dt;
+    }
 }

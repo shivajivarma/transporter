@@ -3,6 +3,7 @@ package codemons.transporter.rest.passenger;
 import codemons.transporter.model.location.Location;
 import codemons.transporter.model.passenger.Passenger;
 import codemons.transporter.model.reservation.Reservation;
+import codemons.transporter.model.reservation.ReservationRO;
 import codemons.transporter.service.location.LocationService;
 import codemons.transporter.service.passenger.PassengerService;
 import codemons.transporter.service.reservation.ReservationService;
@@ -40,8 +41,8 @@ public class PassengerController {
     @RequestMapping(value = "/{username}/reservations", method = RequestMethod.GET, produces = {"application/json"})
     public
     @ResponseBody
-    List<Reservation> getPassengerReservations(@PathVariable String username) {
-        return reservationService.getReservationsByUsername(username);
+    List<ReservationRO> getPassengerReservations(@PathVariable String username) {
+        return reservationService.getReservationROsByUsername(username);
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = {"application/json"}, produces = {"application/json"})

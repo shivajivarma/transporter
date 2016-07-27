@@ -22,15 +22,19 @@ public class Reservation {
     // An auto generated id (unique for each user in the db)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
+    private long id;
 
-    long strip;
+    @Column(name ="trip")
+    private long trip;
 
-    String username;
+    @Column(name ="username")
+    private String username;
 
-    float cost;
+    @Column(name ="cost")
+    private float cost;
 
-    byte status;
+    @Column(name ="status")
+    private byte status;
 
     public Reservation() {
     }
@@ -51,12 +55,12 @@ public class Reservation {
         this.id = id;
     }
 
-    public long getStrip() {
-        return strip;
+    public long getTrip() {
+        return trip;
     }
 
-    public void setStrip(long strip) {
-        this.strip = strip;
+    public void setTrip(long trip) {
+        this.trip = trip;
     }
 
     public String getUsername() {

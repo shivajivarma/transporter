@@ -1,7 +1,5 @@
 /*
- * The MIT License (MIT)
- *
- * Copyright (c) 2015 CODEMONS
+ * Copyright (c) 2016 CODEMONS
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
  *
@@ -12,41 +10,28 @@
 
 package codemons.transporter.model.reservation;
 
-import codemons.transporter.model.trip.Trip;
+import codemons.transporter.model.trip.TripRO;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
 
-
-@Entity
 public class ReservationRO {
 
-    // An auto generated id (unique for each user in the db)
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
+    private long id;
 
-    Trip trip;
+    private TripRO trip;
 
-    String username;
+    private String username;
 
-    float cost;
+    private float cost;
 
-    byte status;
+    private byte status;
 
-    public ReservationRO(Reservation reservation, Trip trip) {
-        this.id = reservation.id;
+    public ReservationRO(Reservation reservation, TripRO trip) {
+        this.id = reservation.getId();
         this.trip = trip;
-        this.username = reservation.username;
-        this.cost = reservation.cost;
-        this.status = reservation.status;
-    }
-
-    public float getCost() {
-        return cost;
-    }
-
-    public void setCost(float cost) {
-        this.cost = cost;
+        this.username = reservation.getUsername();
+        this.cost = reservation.getCost();
+        this.status = reservation.getStatus();
     }
 
     public long getId() {
@@ -57,11 +42,11 @@ public class ReservationRO {
         this.id = id;
     }
 
-    public Trip getTrip() {
+    public TripRO getTrip() {
         return trip;
     }
 
-    public void setTrip(Trip trip) {
+    public void setTrip(TripRO trip) {
         this.trip = trip;
     }
 
@@ -71,6 +56,14 @@ public class ReservationRO {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public float getCost() {
+        return cost;
+    }
+
+    public void setCost(float cost) {
+        this.cost = cost;
     }
 
     public byte getStatus() {

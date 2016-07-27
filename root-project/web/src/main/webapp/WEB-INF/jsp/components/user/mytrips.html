@@ -73,7 +73,7 @@
                             <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
                             </button>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Cancel"><i class="fa fa-ban"></i></button>
+                                <button id="cancelReservation" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Cancel"><i class="fa fa-ban"></i></button>
                                 <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Print"><i class="fa fa-print"></i></button>
                             </div>
                             <!-- /.btn-group -->
@@ -88,159 +88,36 @@
                             <!-- /.pull-right -->
                         </div>
                         <div class="trip-tickets">
-                        <table id="example2" class="table table-hover table-striped">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th>Ticket No.</th>
-                                <th>From</th>
-                                <th>To</th>
-                                <th>Date</th>
-                                <th>Type</th>
-                                <th>Operator</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td><input type="checkbox"></td><td><a href="index.jsp">765447</a></td>
-                                <td class="trip-from">Visakhapatnam</td>
-                                <td class="trip-to">Bangalore</td>
-                                <td class="trip-date">31 Oct 2006</td>
-                                <td class="trip-date">Bus</td>
-                                <td class="trip-operator">VLR Operators</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td><td><a href="index.jsp">765447</a></td>
-                                <td class="trip-from">Hyderabad</td>
-                                <td class="trip-to">Bangalore</td>
-                                <td class="trip-date">31 Oct 2006</td>
-                                <td class="trip-date">Bus</td>
-                                <td class="trip-operator">VLR Operators</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td><td><a href="index.jsp">765447</a></td>
-                                <td class="trip-from">Visakhapatnam</td>
-                                <td class="trip-to">Tirupati</td>
-                                <td class="trip-date">31 Oct 2006</td>
-                                <td class="trip-date">Bus</td>
-                                <td class="trip-operator">VLR Operators</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td><td><a href="index.jsp">765447</a></td>
-                                <td class="trip-from">Tirupati</td>
-                                <td class="trip-to">Bangalore</td>
-                                <td class="trip-date">31 Oct 2006</td>
-                                <td class="trip-date">Bus</td>
-                                <td class="trip-operator">VLR Operators</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td><td><a href="index.jsp">765447</a></td>
-                                <td class="trip-from">Tirupati</td>
-                                <td class="trip-to">Hyderabad</td>
-                                <td class="trip-date">31 Oct 2006</td>
-                                <td class="trip-date">Bus</td>
-                                <td class="trip-operator">VLR Operators</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td><td><a href="index.jsp">765447</a></td>
-                                <td class="trip-from">Visakhapatnam</td>
-                                <td class="trip-to">Bangalore</td>
-                                <td class="trip-date">31 Oct 2006</td>
-                                <td class="trip-date">Bus</td>
-                                <td class="trip-operator">VLR Operators</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td><td><a href="index.jsp">765447</a></td>
-                                <td class="trip-from">Visakhapatnam</td>
-                                <td class="trip-to">Bangalore</td>
-                                <td class="trip-date">31 Oct 2006</td>
-                                <td class="trip-date">Bus</td>
-                                <td class="trip-operator">VLR Operators</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td><td><a href="index.jsp">765447</a></td>
-                                <td class="trip-from">Visakhapatnam</td>
-                                <td class="trip-to">Bangalore</td>
-                                <td class="trip-date">31 Oct 2006</td>
-                                <td class="trip-date">Bus</td>
-                                <td class="trip-operator">VLR Operators</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td><td><a href="index.jsp">765447</a></td>
-                                <td class="trip-from">Visakhapatnam</td>
-                                <td class="trip-to">Bangalore</td>
-                                <td class="trip-date">31 Oct 2006</td>
-                                <td class="trip-date">Bus</td>
-                                <td class="trip-operator">VLR Operators</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td><td><a href="index.jsp">765447</a></td>
-                                <td class="trip-from">Visakhapatnam</td>
-                                <td class="trip-to">Bangalore</td>
-                                <td class="trip-date">31 Oct 2006</td>
-                                <td class="trip-date">Bus</td>
-                                <td class="trip-operator">VLR Operators</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td><td><a href="index.jsp">765447</a></td>
-                                <td class="trip-from">Visakhapatnam</td>
-                                <td class="trip-to">Bangalore</td>
-                                <td class="trip-date">31 Oct 2006</td>
-                                <td class="trip-date">Bus</td>
-                                <td class="trip-operator">VLR Operators</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td><td><a href="index.jsp">765447</a></td>
-                                <td class="trip-from">Visakhapatnam</td>
-                                <td class="trip-to">Bangalore</td>
-                                <td class="trip-date">31 Oct 2006</td>
-                                <td class="trip-date">Bus</td>
-                                <td class="trip-operator">VLR Operators</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td><td><a href="index.jsp">765447</a></td>
-                                <td class="trip-from">Visakhapatnam</td>
-                                <td class="trip-to">Bangalore</td>
-                                <td class="trip-date">31 Oct 2006</td>
-                                <td class="trip-date">Bus</td>
-                                <td class="trip-operator">VLR Operators</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td><td><a href="index.jsp">765447</a></td>
-                                <td class="trip-from">Visakhapatnam</td>
-                                <td class="trip-to">Bangalore</td>
-                                <td class="trip-date">31 Oct 2006</td>
-                                <td class="trip-date">Bus</td>
-                                <td class="trip-operator">VLR Operators</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td><td><a href="index.jsp">765447</a></td>
-                                <td class="trip-from">Visakhapatnam</td>
-                                <td class="trip-to">Bangalore</td>
-                                <td class="trip-date">31 Oct 2006</td>
-                                <td class="trip-date">Bus</td>
-                                <td class="trip-operator">VLR Operators</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td><td><a href="index.jsp">765447</a></td>
-                                <td class="trip-from">Visakhapatnam</td>
-                                <td class="trip-to">Bangalore</td>
-                                <td class="trip-date">31 Oct 2006</td>
-                                <td class="trip-date">Bus</td>
-                                <td class="trip-operator">VLR Operators</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td><td><a href="index.jsp">765447</a></td>
-                                <td class="trip-from">Visakhapatnam</td>
-                                <td class="trip-to">Bangalore</td>
-                                <td class="trip-date">31 Oct 2006</td>
-                                <td class="trip-date">Bus</td>
-                                <td class="trip-operator">VLR Operators</td>
-                            </tr>
+                            <script type="text/html" id="mytrips-row-template">
+                                <tr>
+                                    <td><input type="checkbox" value="{{id}}"></td><td><a href="/">{{id}}</a></td>
+                                    <td class="trip-from">{{trip.routemap.0.from.name}}</td>
+                                    <td class="trip-to">{{trip.routemap.0.to.name}}</td>
+                                    <td class="trip-date">{{trip.dt}}</td>
+                                    <td class="trip-type">{{trip.vehicle.type}}</td>
+                                </tr>
+                            </script>
+                            <script type="text/html" id="mytrips-table-template">
+                                <table  class="table table-hover table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Ticket No.</th>
+                                        <th>From</th>
+                                        <th>To</th>
+                                        <th>Date</th>
+                                        <th>Type</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </script>
+                            <div id="mytrips-table">
 
-                            </tbody>
-                        </table>
                             </div>
+
+                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>

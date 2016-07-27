@@ -1,7 +1,5 @@
 /*
- * The MIT License (MIT)
- *
- * Copyright (c) 2015 CODEMONS
+ * Copyright (c) 2016 CODEMONS
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
  *
@@ -28,13 +26,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class TripService {
-
-    @Autowired
-    private ReservationRepository reservationRepository;
 
     @Autowired
     private TripRepository tripRepository;
@@ -48,59 +44,26 @@ public class TripService {
     @Autowired
     private VehicleRepository vehicleRepository;
 
-    /**
-     *  Reservation Operations
-     **/
-    public List<Reservation> getAllReservations() {
-        List<Reservation> reservations = reservationRepository.findAll();
-        return reservations;
-    }
 
-    public List<Reservation> getReservationsByUsername(String username) {
-        List<Reservation> reservations = reservationRepository.findByUsername(username);
-        return reservations;
-    }
+     public List<TripRO> getTripROsByFromToJourneyDate(long from, long to, Date dt) {
+        List<Trip> trips = tripRepository.findByFromAndToAndDt(from, to, dt);
 
-    public Reservation getReservation(long id) {
-        return reservationRepository.findOne(id);
-    }
+        List<TripRO> tripROs = new ArrayList<TripRO>();
 
-    public Reservation addReservation(Reservation reservation) {
-        return reservationRepository.save(reservation);
-    }
-
-    /**
-     *  ReservationRO Operations
-     **/
-     public List<ReservationRO> getReservationROsByUsername(String username) {
-        List<Reservation> reservations = reservationRepository.findByUsername(username);
-
-        List<ReservationRO> reservationROs = new ArrayList<ReservationRO>();
-
-         for (Reservation reservation:
-              reservations) {
-             Trip trip = tripRepository.findOne(reservation.getTrip());
-
-
-
+         for (Trip trip:
+              trips) {
              List<RouteRO> routemap = new ArrayList<RouteRO>();
              Route route = routeRepository.findOne(Long.parseLong(trip.getRoutemap()));
-             Location from = locationRepository.findOne(route.getFrom());
-             Location to = locationRepository.findOne(route.getTo());
-             RouteRO routeRO = new RouteRO(route, from, to);
-
+             Location fromLocation = locationRepository.findOne(route.getFrom());
+             Location toLocation = locationRepository.findOne(route.getTo());
+             RouteRO routeRO = new RouteRO(route, fromLocation, toLocation);
              routemap.add(routeRO);
 
-             TripRO tripRO = new TripRO(trip, routemap, vehicleRepository.findOne(trip.getVehicle()));
-
-             reservationROs.add(new ReservationRO(reservation, tripRO));
+             tripROs.add(new TripRO(trip, routemap, vehicleRepository.findOne(trip.getVehicle())));
          }
-        return reservationROs;
+        return tripROs;
      }
 
-    public void removeReservation(long id) {
-        reservationRepository.delete(id);
-    }
 
 }
 

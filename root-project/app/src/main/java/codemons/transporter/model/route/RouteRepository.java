@@ -19,17 +19,17 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Transactional
-public interface RouteRepository extends CrudRepository<Trip, Long> {
+public interface RouteRepository extends CrudRepository<Route, Long> {
 
     /**
      * This method will find an Location instance in the database by its id.
      * Note that this method is not implemented and its working code will be
      * automatically generated from its signature by Spring Data JPA.
      */
-    public Trip findOne(Long id);
+    public Route findOne(Long id);
 
-    public List<Trip> findAll();
+    public List<Route> findAll();
 
-    public Trip save(Trip trip);
+    public Route save(Route route);
 }
 

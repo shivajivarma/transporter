@@ -12,8 +12,19 @@
 
 package codemons.transporter.service.reservation;
 
+import codemons.transporter.model.location.Location;
+import codemons.transporter.model.location.LocationRepository;
 import codemons.transporter.model.reservation.Reservation;
+import codemons.transporter.model.reservation.ReservationRO;
 import codemons.transporter.model.reservation.ReservationRepository;
+import codemons.transporter.model.route.Route;
+import codemons.transporter.model.route.RouteRO;
+import codemons.transporter.model.route.RouteRepository;
+import codemons.transporter.model.trip.Trip;
+import codemons.transporter.model.trip.TripRO;
+import codemons.transporter.model.trip.TripRepository;
+import codemons.transporter.model.vehicle.Vehicle;
+import codemons.transporter.model.vehicle.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +36,18 @@ public class ReservationService {
 
     @Autowired
     private ReservationRepository reservationRepository;
+
+    @Autowired
+    private TripRepository tripRepository;
+
+    @Autowired
+    private RouteRepository routeRepository;
+
+    @Autowired
+    private LocationRepository locationRepository;
+
+    @Autowired
+    private VehicleRepository vehicleRepository;
 
     /**
      *  Reservation Operations
@@ -53,13 +76,32 @@ public class ReservationService {
      public List<ReservationRO> getReservationROsByUsername(String username) {
         List<Reservation> reservations = reservationRepository.findByUsername(username);
 
-         List<ReservationRO> reservationROs = new ArrayList<ReservationRO>();
+        List<ReservationRO> reservationROs = new ArrayList<ReservationRO>();
 
          for (Reservation reservation:
               reservations) {
-             reservationROs.add(new ReservationRO(reservation, null));
+             Trip trip = tripRepository.findOne(reservation.getTrip());
+
+
+
+             List<RouteRO> routemap = new ArrayList<RouteRO>();
+             Route route = routeRepository.findOne(Long.parseLong(trip.getRoutemap()));
+             Location from = locationRepository.findOne(route.getFrom());
+             Location to = locationRepository.findOne(route.getTo());
+             RouteRO routeRO = new RouteRO(route, from, to);
+
+             routemap.add(routeRO);
+
+             TripRO tripRO = new TripRO(trip, routemap, vehicleRepository.findOne(trip.getVehicle()));
+
+             reservationROs.add(new ReservationRO(reservation, tripRO));
          }
         return reservationROs;
      }
+
+    public void removeReservation(long id) {
+        reservationRepository.delete(id);
+    }
+
 }
 

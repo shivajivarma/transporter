@@ -1,3 +1,15 @@
+<style type="text/css">
+    .dataTables_filter {
+        display: none;
+    }
+    .dataTables_info {
+        margin-left: 10px;
+    }
+    .dataTables_paginate {
+        margin-right: 10px !important;
+    }
+</style>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -14,5 +26,150 @@
     <!-- Main content -->
     <section class="content">
 
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+                <!-- SELECT2 -->
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Book Bus Tickets & Cars</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <form id="enquire">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="from-select2">From</label>
+                                    <select id="from-select2" class="form-control select2" style="width: 100%;">
+                                    </select>
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="to-select2">To</label>
+                                    <select id="to-select2" class="form-control select2" style="width: 100%;">
+
+                                    </select>
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                        </form>
+                    </div>
+                </div>
+                <!-- /.box -->
+
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Buses</h3>
+
+                        <div class="box-tools pull-right">
+                            <div class="has-feedback">
+                                <input id="global_filter" type="text" class="form-control input-sm" placeholder="Search Bus">
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                            </div>
+                        </div>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>
+                            Please selection locations and date.
+                        </p>
+                    </div>
+                    <div class="box-body no-padding">
+                        <div class="mailbox-controls">
+                            <!-- Check all button -->
+                            <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
+                            </button>
+                            <div class="btn-group">
+                                <button id="bookTicket" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Book Ticket"><i class="fa fa-shopping-cart"></i></button>
+                            </div>
+                            <!-- /.btn-group -->
+                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                                </div>
+                                <!-- /.btn-group -->
+                            </div>
+                            <!-- /.pull-right -->
+                        </div>
+                        <div class="trip-tickets">
+                            <script type="text/html" id="mytrips-row-template">
+                                <tr>
+                                    <td><input type="checkbox" value="{{id}}"></td>
+                                    <td><a href="index.jsp">{{id}}</a></td>
+                                    <td class="trip-from">{{routemap.0.from.name}}</td>
+                                    <td class="trip-to">{{routemap.0.to.name}}</td>
+                                    <td class="trip-date">{{dt}}</td>
+                                    <td class="trip-type">{{vehicle.type}}</td>
+                                    <td class="trip-availability">{{seating}}</td>
+                                </tr>
+                            </script>
+                            <script type="text/html" id="mytrips-table-template">
+                                <table  class="table table-hover table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Trip Id.</th>
+                                        <th>From</th>
+                                        <th>To</th>
+                                        <th>Price</th>
+                                        <th>Type</th>
+                                        <th>Availability</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </script>
+                            <div id="mytrips-table">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-3">
+                <!-- Calendar -->
+                <div class="box box-solid bg-green-gradient">
+                    <div class="box-header">
+                        <i class="fa fa-calendar"></i>
+
+                        <h3 class="box-title">Date of Journey</h3>
+                        <!-- tools box -->
+                        <div class="pull-right box-tools">
+                            <button type="button" class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                        <!-- /. tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body no-padding">
+                        <!--The calendar -->
+                        <div id="calendar" style="width: 100%"></div>
+                    </div>
+                </div>
+                <!-- /Calendar -->
+            </div>
+            <!-- /.col -->
+        </div>
     </section><!-- /.content -->
 </div><!-- /.content-wrapper -->

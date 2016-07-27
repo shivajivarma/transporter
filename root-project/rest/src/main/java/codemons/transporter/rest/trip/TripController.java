@@ -10,41 +10,28 @@
 
 package codemons.transporter.rest.trip;
 
+import codemons.transporter.model.trip.TripRO;
 import codemons.transporter.model.vehicle.Vehicle;
+import codemons.transporter.service.trip.TripService;
 import codemons.transporter.service.vehicle.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/rest/vehicles")
+@RequestMapping("/rest/trips")
 public class TripController {
     @Autowired
-    private VehicleService vehicleService;
+    private TripService tripService;
 
-    @RequestMapping(method = RequestMethod.GET, produces = {"application/json"})
+    @RequestMapping(value = "/{from}/{to}/{dt}", method = RequestMethod.GET, produces = {"application/json"})
     public
     @ResponseBody
-    List<Vehicle> getVehicles() {
-        return vehicleService.getAllVehicles();
-    }
-
-
-    @RequestMapping(value = "/{locationId}", method = RequestMethod.GET, produces = {"application/json"})
-    public
-    @ResponseBody
-    Vehicle getVehicle(@PathVariable long locationId) {
-        return vehicleService.getVehicle(locationId);
-    }
-
-
-    @RequestMapping(method = RequestMethod.POST, consumes = {"application/json"}, produces = {"application/json"})
-    @ResponseStatus(HttpStatus.CREATED)
-    public
-    @ResponseBody
-    Vehicle addVehicle(@RequestBody Vehicle vehicle) {
-        return vehicleService.addVehicle(vehicle);
+    List<TripRO> getTrips(@PathVariable long from, @PathVariable long to,  @PathVariable @DateTimeFormat(pattern="ddMMyyyy") Date dt) {
+        return tripService.getTripROsByFromToJourneyDate(from, to, dt);
     }
 }

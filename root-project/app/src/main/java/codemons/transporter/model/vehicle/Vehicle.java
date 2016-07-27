@@ -1,7 +1,5 @@
 /*
- * The MIT License (MIT)
- *
- * Copyright (c) 2015 CODEMONS
+ * Copyright (c) 2016 CODEMONS
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
  *
@@ -16,7 +14,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "locations")
+@Table(name = "vehicles")
 public class Vehicle {
 
     // An auto generated id (unique for each user in the db)
@@ -24,8 +22,14 @@ public class Vehicle {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "type")
+    private byte type;
+
+    @Column(name = "priceperunit")
+    private float priceperunit;
+
+    @Column(name = "currentlocation")
+    private long currentlocation;
 
     public Vehicle() {
     }
@@ -34,8 +38,8 @@ public class Vehicle {
         this.id = id;
     }
 
-    public Vehicle(String name) {
-        this.name = name;
+    public Vehicle(byte type) {
+        this.type = type;
     }
 
     public long getId() {
@@ -46,19 +50,40 @@ public class Vehicle {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getType() {
+        if(type == 0){
+            return "bus";
+        } else if(type == 1){
+            return "car";
+        } else{
+            return "other";
+        }
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setType(String type) {
+        if(type.equals("bus")){
+            this.type = 0;
+        } else if(type.equals("car")){
+            this.type = 1;
+        } else{
+            this.type = 2;
+        }
     }
 
-    @Override
-    public String toString() {
-        return "Location{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+    public float getPriceperunit() {
+        return priceperunit;
     }
+
+    public void setPriceperunit(float priceperunit) {
+        this.priceperunit = priceperunit;
+    }
+
+    public long getCurrentlocation() {
+        return currentlocation;
+    }
+
+    public void setCurrentlocation(long currentlocation) {
+        this.currentlocation = currentlocation;
+    }
+
 }

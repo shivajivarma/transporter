@@ -10,28 +10,25 @@
 
 package codemons.transporter.model.route;
 
+import codemons.transporter.model.location.Location;
+
 import javax.persistence.*;
 
-
-@Entity
-@Table(name = "routes")
 public class RouteRO {
 
-    // An auto generated id (unique for each user in the db)
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
+    private long id;
 
-    @Column(name = "from")
-    long from;
+    private Location from;
 
-    @Column(name = "to")
-    long to;
+    private Location to;
 
-    @Column(name = "distance")
-    long distance;
+    private long distance;
 
-    public RouteRO() {
+    public RouteRO(Route route, Location from, Location to) {
+        this.id = route.getId();
+        this.from = from;
+        this.to = to;
+        this.distance = route.getDistance();
     }
 
     public long getId() {
@@ -42,19 +39,19 @@ public class RouteRO {
         this.id = id;
     }
 
-    public long getFrom() {
+    public Location getFrom() {
         return from;
     }
 
-    public void setFrom(long from) {
+    public void setFrom(Location from) {
         this.from = from;
     }
 
-    public long getTo() {
+    public Location getTo() {
         return to;
     }
 
-    public void setTo(long to) {
+    public void setTo(Location to) {
         this.to = to;
     }
 
