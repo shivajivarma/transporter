@@ -12,6 +12,7 @@ package codemons.transporter.trip.service;
 
 import codemons.transporter.location.model.Location;
 import codemons.transporter.location.model.LocationRepository;
+import codemons.transporter.reservation.service.ReservationService;
 import codemons.transporter.route.model.Route;
 import codemons.transporter.route.model.RouteRO;
 import codemons.transporter.route.model.RouteRepository;
@@ -41,6 +42,9 @@ public class TripService {
     @Autowired
     private VehicleRepository vehicleRepository;
 
+    @Autowired
+    private ReservationService reservationService;
+
 
      public List<TripRO> getTripROsByFromToJourneyDate(long from, long to, Date dt) {
         List<Trip> trips = tripRepository.findByFromAndToAndDt(from, to, dt);
@@ -54,7 +58,12 @@ public class TripService {
              Location fromLocation = locationRepository.findOne(route.getFrom());
              Location toLocation = locationRepository.findOne(route.getTo());
              RouteRO routeRO = new RouteRO(route, fromLocation, toLocation);
+
              routemap.add(routeRO);
+
+             long seats = trip.getSeating();
+             seats = seats - reservationService.countReservationsByTrip(trip.getId());
+             trip.setSeating(seats);
 
              tripROs.add(new TripRO(trip, routemap, vehicleRepository.findOne(trip.getVehicle())));
          }

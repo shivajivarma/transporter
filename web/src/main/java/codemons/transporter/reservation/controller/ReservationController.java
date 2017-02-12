@@ -37,7 +37,7 @@ public class ReservationController {
     @ResponseBody
     Reservation getLocation(@PathVariable long reservationId) {
         return reservationService.getReservation(reservationId);
-    }
+    }*/
 
 
     @RequestMapping(method = RequestMethod.POST, consumes = {"application/json"}, produces = {"application/json"})
@@ -46,7 +46,7 @@ public class ReservationController {
     @ResponseBody
     Reservation addLocation(@RequestBody Reservation reservation) {
         return reservationService.addReservation(reservation);
-    }*/
+    }
 
     @RequestMapping(method = RequestMethod.DELETE, consumes = {"application/json"}, produces = {"application/json"})
     @ResponseStatus(HttpStatus.OK)

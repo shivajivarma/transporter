@@ -39,7 +39,7 @@ $(function () {
         },
         loadDashboard: function(username){
             var that = this;
-                cal = $("#calendar").datepicker();
+                cal = $("#calendar").datepicker('setDate', new Date());
             $.getJSON("/rest/locations", function (locations) {
                 that.locations = $.grep(locations, function( location ) {
                     return location.enabled;

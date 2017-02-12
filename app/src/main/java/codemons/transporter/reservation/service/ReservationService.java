@@ -59,11 +59,16 @@ public class ReservationService {
         return reservations;
     }
 
+    public Long countReservationsByTrip(long tripId) {
+        return reservationRepository.countByTrip(tripId);
+    }
+
     public Reservation getReservation(long id) {
         return reservationRepository.findOne(id);
     }
 
     public Reservation addReservation(Reservation reservation) {
+
         return reservationRepository.save(reservation);
     }
 
@@ -78,8 +83,6 @@ public class ReservationService {
          for (Reservation reservation:
               reservations) {
              Trip trip = tripRepository.findOne(reservation.getTrip());
-
-
 
              List<RouteRO> routemap = new ArrayList<RouteRO>();
              Route route = routeRepository.findOne(Long.parseLong(trip.getRoutemap()));

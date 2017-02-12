@@ -29,6 +29,8 @@ public interface ReservationRepository extends CrudRepository<Reservation, Long>
 
     public List<Reservation> findByUsername(String username);
 
+    public Long countByTrip(long trip);
+
     public Reservation save(Reservation reservation);
 
     public void delete(Long id);
