@@ -38,17 +38,18 @@ $(function () {
             }
         },
         loadDashboard: function(username){
-            var that = this;
-                cal = $("#calendar").datepicker('setDate', new Date());
+            var that = this,
+                cal = $("#calendar").datepicker('setDate', new Date()),
+                fromSelect = $('#from-select2');
             $.getJSON("/rest/locations", function (locations) {
                 that.locations = $.grep(locations, function( location ) {
                     return location.enabled;
-                });;
-                $('#from-select2').html('');
+                });
+                fromSelect.html('');
                 $.each(that.locations, function(i, location){
                     $('#from-select2').append('<option value="'+location.id+'">'+location.name+'</option>')
                 });
-                $("#from-select2").select2();
+                fromSelect.select2();
                 that.populateLocations();
             });
 
@@ -65,14 +66,17 @@ $(function () {
             });
         },
         populateLocations: function(){
-            var that = this;
+            var that = this,
+                toSelect = $('#to-select2');
             var from = parseInt($('#from-select2').val());
-            $('#to-select2').html('');
+
+
+            toSelect.html('');
             $.each(this.locations, function(i, location){
                 if(from !== location.id)
                     $('#to-select2').append('<option value="'+location.id+'">'+location.name+'</option>');
             });
-            $("#to-select2").select2();
+            toSelect.select2();
         },
         loadMytrips: function(username){
             var that = this;
@@ -118,6 +122,43 @@ $(function () {
                 that.blueButtons();
             });
         },
+
+        fetchTrips: function(){
+            var that = this;
+            var dt = new moment($('#calendar').data('datepicker').getDate('date')).format('DDMMYYYY');
+            var from = $('#from-select2').val();
+            var to = $('#to-select2').val();
+
+            if(!isNaN(parseInt(dt))){
+
+                $('#mytrips-table').html(Mustache.render(tableTemplate, {}));
+
+                $.getJSON("/rest/trips/"+from+"/"+to+"/"+dt, function (data) {
+
+                    that.reservations = data;
+
+                    $.each(that.reservations, function (id, reservation) {
+                        var html = Mustache.render(rowTemplate, reservation);
+                        $('#mytrips-table tbody').append(html);
+                    });
+
+                    $('#mytrips-table table').DataTable({
+                        "paging": true,
+                        "lengthChange": false,
+                        "searching": true,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": false
+                    });
+
+                    that.blueButtons();
+                });
+            } else {
+                alert('Please select date');
+            }
+        },
+
+
         attachListeners: function () {
             var that = this;
             $('#settings form').on('submit', function (event) {
@@ -176,38 +217,29 @@ $(function () {
 
             $('form#enquire').on('submit', function (e) {
                 e.preventDefault();
+                that.fetchTrips();
+            });
 
-                var dt = new moment($('#calendar').data('datepicker').getDate('date')).format('DDMMYYYY');
-                var from = $('#from-select2').val();
-                var to = $('#to-select2').val();
+            $(document).on('click', '#bookTicket', function(){
 
-                if(!isNaN(parseInt(dt))){
+                $('.trip-tickets input[type=checkbox]:checked').each(function(index, element){
+                    var saveObj = {
+                        trip: element.value,
+                        username: that.username
+                    };
 
-                    $('#mytrips-table').html(Mustache.render(tableTemplate, {}));
-
-                    $.getJSON("/rest/trips/"+from+"/"+to+"/"+dt, function (data) {
-
-                        that.reservations = data;
-
-                        $.each(that.reservations, function (id, reservation) {
-                            var html = Mustache.render(rowTemplate, reservation);
-                            $('#mytrips-table tbody').append(html);
-                        });
-
-                        $('#mytrips-table table').DataTable({
-                            "paging": true,
-                            "lengthChange": false,
-                            "searching": true,
-                            "ordering": true,
-                            "info": true,
-                            "autoWidth": false
-                        });
-
-                        that.blueButtons();
+                    $.ajax({
+                        url: '/rest/reservations',
+                        type: 'POST',
+                        dataType: 'text',
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(saveObj)
+                    }).done(function (data) {
+                        that.fetchTrips();
                     });
-                } else {
-                    alert('Please select date');
-                }
+
+                });
+
             });
 
         },

@@ -52,7 +52,7 @@ tmp/
 *.bak
 *.swp
 *~.nib
-local.properties
+loion}").properties
 .settings/
 .loadpath
 .recommenders
@@ -63,7 +63,7 @@ local.properties
 # External tool builders
 .externalToolBuilders/
 
-# Locally stored "Eclipse launch configurations"
+# Loion}")ly stored "Eclipse launch configurations"
 *.launch
 
 # PyDev specific (Python IDE for Eclipse)

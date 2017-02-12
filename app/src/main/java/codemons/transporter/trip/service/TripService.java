@@ -19,6 +19,7 @@ import codemons.transporter.route.model.RouteRepository;
 import codemons.transporter.trip.model.Trip;
 import codemons.transporter.trip.model.TripRO;
 import codemons.transporter.trip.model.TripRepository;
+import codemons.transporter.vehicle.model.Vehicle;
 import codemons.transporter.vehicle.model.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,14 +59,18 @@ public class TripService {
              Location fromLocation = locationRepository.findOne(route.getFrom());
              Location toLocation = locationRepository.findOne(route.getTo());
              RouteRO routeRO = new RouteRO(route, fromLocation, toLocation);
+             Vehicle vehicle = vehicleRepository.findOne(trip.getVehicle());
 
              routemap.add(routeRO);
 
              long seats = trip.getSeating();
              seats = seats - reservationService.countReservationsByTrip(trip.getId());
-             trip.setSeating(seats);
 
-             tripROs.add(new TripRO(trip, routemap, vehicleRepository.findOne(trip.getVehicle())));
+             TripRO dto = new TripRO(trip, routemap, vehicle);
+             dto.setSeating(seats);
+
+
+             tripROs.add(dto);
          }
         return tripROs;
      }
