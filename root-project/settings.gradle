@@ -1,7 +1,0 @@
-rootProject.name = 'transporter'
-
-include 'app'
-include 'rest'
-//include 'webapp'
-include 'web'
-
