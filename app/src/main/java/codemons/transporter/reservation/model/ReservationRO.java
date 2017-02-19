@@ -11,7 +11,11 @@
 package codemons.transporter.reservation.model;
 
 import codemons.transporter.trip.model.TripRO;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class ReservationRO {
 
     private long id;
@@ -32,43 +36,4 @@ public class ReservationRO {
         this.status = reservation.getStatus();
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public TripRO getTrip() {
-        return trip;
-    }
-
-    public void setTrip(TripRO trip) {
-        this.trip = trip;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public float getCost() {
-        return cost;
-    }
-
-    public void setCost(float cost) {
-        this.cost = cost;
-    }
-
-    public byte getStatus() {
-        return status;
-    }
-
-    public void setStatus(byte status) {
-        this.status = status;
-    }
 }

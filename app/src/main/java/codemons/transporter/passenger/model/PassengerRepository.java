@@ -18,17 +18,7 @@ import java.util.List;
 @Transactional
 public interface PassengerRepository extends CrudRepository<Passenger, Long> {
 
-    /**
-     * This method will find an Location instance in the database by its id.
-     * Note that this method is not implemented and its working code will be
-     * automatically generated from its signature by Spring Data JPA.
-     */
-    public Passenger findOne(Long id);
+    Passenger findByUsername(String username);
 
-    public Passenger findByUsername(String username);
-
-    public List<Passenger> findAll();
-
-    public Passenger save(Passenger passenger);
 }
 

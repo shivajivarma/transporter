@@ -16,17 +16,5 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Transactional
-public interface LocationRepository extends CrudRepository<Location, Long> {
-
-    /**
-     * This method will find an Location instance in the database by its id.
-     * Note that this method is not implemented and its working code will be
-     * automatically generated from its signature by Spring Data JPA.
-     */
-    Location findOne(Long id);
-
-    List<Location> findAll();
-
-    Location save(Location location);
-}
+public interface LocationRepository extends CrudRepository<Location, Long> {}
 

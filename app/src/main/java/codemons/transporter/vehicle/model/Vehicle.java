@@ -10,9 +10,14 @@
 
 package codemons.transporter.vehicle.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 
+@Getter
+@Setter
 @Entity
 @Table(name = "vehicle")
 public class Vehicle {
@@ -42,14 +47,6 @@ public class Vehicle {
         this.type = type;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public String getType() {
         if(type == 0){
             return "bus";
@@ -68,22 +65,6 @@ public class Vehicle {
         } else{
             this.type = 2;
         }
-    }
-
-    public float getPriceperunit() {
-        return priceperunit;
-    }
-
-    public void setPriceperunit(float priceperunit) {
-        this.priceperunit = priceperunit;
-    }
-
-    public long getCurrentlocation() {
-        return currentlocation;
-    }
-
-    public void setCurrentlocation(long currentlocation) {
-        this.currentlocation = currentlocation;
     }
 
 }

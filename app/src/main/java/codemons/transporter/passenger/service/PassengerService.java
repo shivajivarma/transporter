@@ -24,8 +24,7 @@ public class PassengerService {
     private PassengerRepository passengerRepository;
 
     public List<Passenger> getAllPassengers() {
-        List<Passenger> passengers = passengerRepository.findAll();
-        return passengers;
+        return (List<Passenger>) passengerRepository.findAll();
     }
 
     public Passenger getPassengerByUsername(String username) {

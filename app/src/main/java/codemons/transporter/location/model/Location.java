@@ -10,9 +10,14 @@
 
 package codemons.transporter.location.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 
+@Getter
+@Setter
 @Entity
 @Table(name = "location")
 public class Location {
@@ -38,30 +43,6 @@ public class Location {
 
     public Location(String name) {
         this.name = name;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
     }
 
     @Override

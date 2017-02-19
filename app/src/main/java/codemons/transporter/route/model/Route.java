@@ -10,9 +10,14 @@
 
 package codemons.transporter.route.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 
+@Getter
+@Setter
 @Entity
 @Table(name = "route")
 public class Route {
@@ -31,38 +36,5 @@ public class Route {
     @Column(name = "distance")
     private long distance;
 
-    public Route() {
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getFrom() {
-        return from;
-    }
-
-    public void setFrom(long from) {
-        this.from = from;
-    }
-
-    public long getTo() {
-        return to;
-    }
-
-    public void setTo(long to) {
-        this.to = to;
-    }
-
-    public long getDistance() {
-        return distance;
-    }
-
-    public void setDistance(long distance) {
-        this.distance = distance;
-    }
+    public Route() {}
 }

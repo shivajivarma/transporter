@@ -12,10 +12,14 @@ package codemons.transporter.trip.model;
 
 import codemons.transporter.route.model.RouteRO;
 import codemons.transporter.vehicle.model.Vehicle;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 import java.util.List;
 
+@Getter
+@Setter
 public class TripRO {
 
     private long id;
@@ -44,62 +48,6 @@ public class TripRO {
         this.seating = trip.getSeating();
         this.vehicle = vehicle;
         this.dt = trip.getDt();
-    }
-
-    public List<RouteRO> getRoutemap() {
-        return routemap;
-    }
-
-    public void setRoutemap(List<RouteRO> routemap) {
-        this.routemap = routemap;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public float getPriceperperson() {
-        return priceperperson;
-    }
-
-    public void setPriceperperson(float priceperperson) {
-        this.priceperperson = priceperperson;
-    }
-
-    public String getFacilities() {
-        return facilities;
-    }
-
-    public void setFacilities(String facilities) {
-        this.facilities = facilities;
-    }
-
-    public long getSeating() {
-        return seating;
-    }
-
-    public void setSeating(long seating) {
-        this.seating = seating;
-    }
-
-    public Vehicle getVehicle() {
-        return vehicle;
-    }
-
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
-    }
-
-    public Date getDt() {
-        return dt;
-    }
-
-    public void setDt(Date dt) {
-        this.dt = dt;
     }
 
 }

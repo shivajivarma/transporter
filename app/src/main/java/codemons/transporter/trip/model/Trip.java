@@ -10,10 +10,14 @@
 
 package codemons.transporter.trip.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Date;
 
-
+@Getter
+@Setter
 @Entity
 @Table(name = "trip")
 public class Trip {
@@ -44,59 +48,4 @@ public class Trip {
     public Trip() {
     }
 
-    public String getRoutemap() {
-        return routemap;
-    }
-
-    public void setRoutemap(String routemap) {
-        this.routemap = routemap;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public float getPriceperperson() {
-        return priceperperson;
-    }
-
-    public void setPriceperperson(float priceperperson) {
-        this.priceperperson = priceperperson;
-    }
-
-    public String getFacilities() {
-        return facilities;
-    }
-
-    public void setFacilities(String facilities) {
-        this.facilities = facilities;
-    }
-
-    public long getSeating() {
-        return seating;
-    }
-
-    public void setSeating(long seating) {
-        this.seating = seating;
-    }
-
-    public long getVehicle() {
-        return vehicle;
-    }
-
-    public void setVehicle(byte vehicle) {
-        this.vehicle = vehicle;
-    }
-
-    public Date getDt() {
-        return dt;
-    }
-
-    public void setDt(Date dt) {
-        this.dt = dt;
-    }
 }

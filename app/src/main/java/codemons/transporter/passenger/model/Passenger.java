@@ -10,10 +10,15 @@
 
 package codemons.transporter.passenger.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Date;
 
 
+@Getter
+@Setter
 @Entity
 @Table(name = "passenger")
 public class Passenger {
@@ -50,38 +55,6 @@ public class Passenger {
         this.mobile=passenger.mobile;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date dob) {
-        this.dob = dob;
-    }
-
     public String getGender() {
         if(gender == 0){
             return "male";
@@ -100,22 +73,6 @@ public class Passenger {
         } else{
             this.gender = 2;
         }
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
     }
 
     @Override

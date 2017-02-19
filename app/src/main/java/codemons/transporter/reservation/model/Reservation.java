@@ -10,9 +10,13 @@
 
 package codemons.transporter.reservation.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
-
+@Getter
+@Setter
 @Entity
 @Table(name = "reservation")
 public class Reservation {
@@ -34,46 +38,6 @@ public class Reservation {
     @Column(name ="status")
     private byte status;
 
-    public Reservation() {
-    }
+    public Reservation() {}
 
-    public float getCost() {
-        return cost;
-    }
-
-    public void setCost(float cost) {
-        this.cost = cost;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getTrip() {
-        return trip;
-    }
-
-    public void setTrip(long trip) {
-        this.trip = trip;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public byte getStatus() {
-        return status;
-    }
-
-    public void setStatus(byte status) {
-        this.status = status;
-    }
 }

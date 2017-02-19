@@ -24,8 +24,7 @@ public class LocationService {
     private LocationRepository locationRepository;
 
     public List<Location> getAllLocations() {
-        List<Location> locations = locationRepository.findAll();
-        return locations;
+        return (List<Location>) locationRepository.findAll();
     }
 
     public Location getLocation(long id) {

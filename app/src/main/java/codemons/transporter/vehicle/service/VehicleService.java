@@ -24,8 +24,7 @@ public class VehicleService {
     private VehicleRepository vehicleRepository;
 
     public List<Vehicle> getAllVehicles() {
-        List<Vehicle> vehicles = vehicleRepository.findAll();
-        return vehicles;
+        return (List<Vehicle>) vehicleRepository.findAll();
     }
 
     public Vehicle getVehicle(long id) {
