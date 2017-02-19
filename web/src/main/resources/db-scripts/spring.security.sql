@@ -12,11 +12,3 @@ CREATE TABLE transporter.user_roles (
   UNIQUE KEY uni_username_role (role,username),
   KEY fk_username_idx (username),
   CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES transporter.users (username));
-
-INSERT INTO transporter.users(username,password,enabled)
-VALUES ('admin','admin', true);
-
-INSERT INTO transporter.user_roles (username, role)
-VALUES ('admin', 'ROLE_ADMIN');
-INSERT INTO transporter.user_roles (username, role)
-VALUES ('admin', 'ROLE_USER');
