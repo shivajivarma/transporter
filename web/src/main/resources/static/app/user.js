@@ -39,8 +39,11 @@ $(function () {
         },
         loadDashboard: function(username){
             var that = this,
-                cal = $("#calendar").datepicker('setDate', new Date()),
+                cal = $("#calendar").datepicker(),
                 fromSelect = $('#from-select2');
+
+            cal.datepicker('update', moment().format('MM-DD-YYYY'));
+
             $.getJSON("/rest/locations", function (locations) {
                 that.locations = $.grep(locations, function( location ) {
                     return location.enabled;

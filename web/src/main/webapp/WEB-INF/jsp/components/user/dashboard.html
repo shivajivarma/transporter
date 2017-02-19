@@ -50,9 +50,6 @@
                                     </select>
                                 </div>
                                 <!-- /.form-group -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="to-select2">To</label>
                                     <select id="to-select2" class="form-control select2" style="width: 100%;">
@@ -61,6 +58,31 @@
                                 </div>
                                 <!-- /.form-group -->
                             </div>
+
+                            <div class="col-md-3">
+                                <!-- Calendar -->
+                                <div class="box box-solid bg-green-gradient">
+                                    <div class="box-header">
+                                        <i class="fa fa-calendar"></i>
+
+                                        <h3 class="box-title">Date of Journey</h3>
+                                        <!-- tools box -->
+                                        <div class="pull-right box-tools">
+                                            <button type="button" class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                        </div>
+                                        <!-- /. tools -->
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body no-padding">
+                                        <!--The calendar -->
+                                        <div id="calendar" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                                <!-- /Calendar -->
+                            </div>
+                            <!-- /.col -->
+
+
                             <!-- /.col -->
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-primary">Search</button>
@@ -148,28 +170,7 @@
                 <!-- /.box -->
             </div>
             <!-- /.col -->
-            <div class="col-md-3">
-                <!-- Calendar -->
-                <div class="box box-solid bg-green-gradient">
-                    <div class="box-header">
-                        <i class="fa fa-calendar"></i>
 
-                        <h3 class="box-title">Date of Journey</h3>
-                        <!-- tools box -->
-                        <div class="pull-right box-tools">
-                            <button type="button" class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        </div>
-                        <!-- /. tools -->
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body no-padding">
-                        <!--The calendar -->
-                        <div id="calendar" style="width: 100%"></div>
-                    </div>
-                </div>
-                <!-- /Calendar -->
-            </div>
-            <!-- /.col -->
         </div>
     </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
