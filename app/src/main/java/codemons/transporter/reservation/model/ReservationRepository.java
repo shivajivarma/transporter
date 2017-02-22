@@ -18,21 +18,8 @@ import java.util.List;
 @Transactional
 public interface ReservationRepository extends CrudRepository<Reservation, Long> {
 
-    /**
-     * This method will find an Location instance in the database by its id.
-     * Note that this method is not implemented and its working code will be
-     * automatically generated from its signature by Spring Data JPA.
-     */
-    public Reservation findOne(Long id);
-
-    public List<Reservation> findAll();
-
     public List<Reservation> findByUsername(String username);
 
     public Long countByTrip(long trip);
-
-    public Reservation save(Reservation reservation);
-
-    public void delete(Long id);
 }
 

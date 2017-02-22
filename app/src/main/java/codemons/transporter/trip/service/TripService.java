@@ -10,23 +10,24 @@
 
 package codemons.transporter.trip.service;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import codemons.transporter.location.model.Location;
-import codemons.transporter.location.model.LocationRepository;
+import codemons.transporter.location.service.LocationService;
 import codemons.transporter.reservation.service.ReservationService;
 import codemons.transporter.route.model.Route;
 import codemons.transporter.route.model.RouteRO;
-import codemons.transporter.route.model.RouteRepository;
+import codemons.transporter.route.service.RouteService;
 import codemons.transporter.trip.model.Trip;
 import codemons.transporter.trip.model.TripRO;
 import codemons.transporter.trip.model.TripRepository;
 import codemons.transporter.vehicle.model.Vehicle;
-import codemons.transporter.vehicle.model.VehicleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import codemons.transporter.vehicle.service.VehicleService;
 
 @Service
 public class TripService {
@@ -35,13 +36,13 @@ public class TripService {
     private TripRepository tripRepository;
 
     @Autowired
-    private RouteRepository routeRepository;
+    private RouteService routeService;
 
     @Autowired
-    private LocationRepository locationRepository;
+    private LocationService locationService;
 
     @Autowired
-    private VehicleRepository vehicleRepository;
+    private VehicleService vehicleService;
 
     @Autowired
     private ReservationService reservationService;
@@ -55,11 +56,11 @@ public class TripService {
          for (Trip trip:
               trips) {
              List<RouteRO> routemap = new ArrayList<RouteRO>();
-             Route route = routeRepository.findOne(Long.parseLong(trip.getRoutemap()));
-             Location fromLocation = locationRepository.findOne(route.getFrom());
-             Location toLocation = locationRepository.findOne(route.getTo());
+             Route route = routeService.getRoute(Long.parseLong(trip.getRoutemap()));
+             Location fromLocation = locationService.getLocation(route.getFrom());
+             Location toLocation = locationService.getLocation(route.getTo());
              RouteRO routeRO = new RouteRO(route, fromLocation, toLocation);
-             Vehicle vehicle = vehicleRepository.findOne(trip.getVehicle());
+             Vehicle vehicle = vehicleService.getVehicle(trip.getVehicle());
 
              routemap.add(routeRO);
 

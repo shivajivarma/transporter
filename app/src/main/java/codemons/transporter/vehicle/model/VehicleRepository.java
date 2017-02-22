@@ -13,20 +13,6 @@ package codemons.transporter.vehicle.model;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Transactional
-public interface VehicleRepository extends CrudRepository<Vehicle, Long> {
-
-    /**
-     * This method will find an Location instance in the database by its id.
-     * Note that this method is not implemented and its working code will be
-     * automatically generated from its signature by Spring Data JPA.
-     */
-    public Vehicle findOne(Long id);
-
-    public List<Vehicle> findAll();
-
-    public Vehicle save(Vehicle vehicle);
-}
+public interface VehicleRepository extends CrudRepository<Vehicle, Long> {}
 

@@ -21,17 +21,6 @@ import java.util.List;
 @Transactional
 public interface TripRepository extends CrudRepository<Trip, Long> {
 
-    /**
-     * This method will find an Location instance in the database by its id.
-     * Note that this method is not implemented and its working code will be
-     * automatically generated from its signature by Spring Data JPA.
-     */
-    public Trip findOne(Long id);
-
-    public List<Trip> findAll();
-
-    public Trip save(Trip trip);
-
     @Query("SELECT t FROM Trip t WHERE t.routemap IN (SELECT r.id FROM Route r WHERE r.from = :from AND r.to = :to AND t.dt = :dt)")
     public List<Trip> findByFromAndToAndDt(@Param("from") Long from,
                                            @Param("to") Long to,

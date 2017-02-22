@@ -13,8 +13,6 @@ package codemons.transporter.passenger.model;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Transactional
 public interface PassengerRepository extends CrudRepository<Passenger, Long> {
 

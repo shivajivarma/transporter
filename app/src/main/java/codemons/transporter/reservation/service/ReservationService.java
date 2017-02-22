@@ -50,7 +50,7 @@ public class ReservationService {
      *  Reservation Operations
      **/
     public List<Reservation> getAllReservations() {
-        List<Reservation> reservations = reservationRepository.findAll();
+        List<Reservation> reservations = (List<Reservation>) reservationRepository.findAll();
         return reservations;
     }
 
